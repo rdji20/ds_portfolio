@@ -1,38 +1,98 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body,
+html {
+    overflow: hidden; /* Prevent scrolling */
+    height: 100%; /* Ensure full viewport height */
+    margin: 0; /* Remove default margin */
+}
+
 .App {
-  text-align: center;
+    text-align: center;
 }
 
 .App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+    height: 40vmin;
+    pointer-events: none;
 }
 
 .App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+    background-color: #282c34;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: calc(10px + 2vmin);
+    color: white;
+}
+
+@media (min-width: 768px) {
+    .Profile-img {
+        object-fit: cover;
+        width: 200px;
+        height: 200px;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        border-radius: 100px;
+    }
+    .greeting {
+        padding: 10px 10px 20px 10px;
+        font-size: 14px;
+    }
+    .bot-name {
+        font-weight: bold;
+    }
+    .chat-input {
+        position: absolute;
+        bottom: 10px; /* position it 10 pixels from the bottom */
+        left: 10%; /* centering it horizontally */
+        right: 10%; /* centering it horizontally */
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+    }
+}
+
+@media (max-width: 767px) {
+    .profile-container {
+        width: auto;
+    }
+
+    .Profile-img {
+        object-fit: cover;
+        width: 100px;
+        height: 100px;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        border-radius: 50px;
+    }
+
+    /* CSS for all Text in phone dev */
+    .greeting {
+        font-size: 12px;
+        padding: 0px 10px 0px 10px;
+    }
+    .bot-name {
+        font-weight: bold;
+    }
+
+    /* ------------------- */
 }
 
 .App-link {
-  color: #61dafb;
+    color: #61dafb;
 }
 
 @keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
 }
