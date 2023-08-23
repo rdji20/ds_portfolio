@@ -2,11 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
-body,
-html {
-    overflow: hidden; /* Prevent scrolling */
-    height: 100%; /* Ensure full viewport height */
-    margin: 0; /* Remove default margin */
+body {
+    background-color: #282c34;
+}
+
+.colordef {
+    background-color: #282c34;
 }
 
 .App {
@@ -55,44 +56,8 @@ html {
         border: 1px solid #ccc;
         border-radius: 5px;
     }
-}
-
-@media (max-width: 767px) {
-    .profile-container {
-        width: auto;
-    }
-
-    .Profile-img {
-        object-fit: cover;
-        width: 100px;
-        height: 100px;
-        display: block;
-        margin-left: auto;
-        margin-right: auto;
-        border-radius: 50px;
-    }
-
-    /* CSS for all Text in phone dev */
-    .greeting {
-        font-size: 12px;
-        padding: 0px 10px 0px 10px;
-    }
-    .bot-name {
-        font-weight: bold;
-    }
-
-    /* ------------------- */
-}
-
-.App-link {
-    color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-    from {
-        transform: rotate(0deg);
-    }
-    to {
-        transform: rotate(360deg);
+    .cardd {
+        background-color: #61dafb;
+        border-radius: 5em;
     }
 }

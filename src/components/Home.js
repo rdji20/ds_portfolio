@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import "../App.css";
 import imageSrc from "../img/me_sea.jpg";
 
 // Function to send a message to the backend and retrieve the response
