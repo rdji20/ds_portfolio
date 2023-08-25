@@ -32,6 +32,7 @@ function App() {
             </nav>
 
             {/* Routes */}
+            {/* Routes */}
             <Routes>
                 <Route path="/projects" element={<Projects />} />
                 <Route path="/blog" element={<Blog />} />

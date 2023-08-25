@@ -15,7 +15,7 @@ function ProjectCard({ project }) {
                 <h3 className="text-xl font-semibold mb-2">{project.title}</h3>
                 <p className="text-gray-600 mb-4">{project.description}</p>
                 <a
-                    href={project.link}
+                    href={project.url}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="text-indigo-600 hover:text-indigo-800 hover:underline"

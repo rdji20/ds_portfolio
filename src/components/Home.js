@@ -34,40 +34,21 @@ function Home() {
                     <img src={imageSrc} className="Profile-img" alt="logo" />
                     <h2 className="text-3xl font-bold pt-6">Hello World!</h2>
                     <p className="greeting pb-6">
-                        My name is Roberto and I'm a Information Scientist and
-                        Designer. Chat with my{" "}
-                        <span className="bot-name">bobby.AI</span> to know more
+                        My name is Roberto and I'm a Information and Data
+                        Scientist. Chat with my{" "}
+                        <span className="bot-name">Bobby.AI</span> to know more
                         about me!
                     </p>
                 </div>
             </header>
 
             {chatOn && (
-                <section className="pt-10">
-                    {messages.map((message, index) => (
-                        <div
-                            key={index}
-                            className={`chat ${
-                                message.sender === "user"
-                                    ? "chat-end"
-                                    : "chat-start"
-                            }`}
-                        >
-                            <div className="chat-bubble">{message.text}</div>
-                        </div>
-                    ))}
-                    <div className="chat-input">
-                        <input
-                            type="text"
-                            placeholder="Type your message..."
-                            onKeyPress={(event) => {
-                                if (event.key === "Enter") {
-                                    handleSendMessage(event.target.value);
-                                    event.target.value = ""; // Clear the input
-                                }
-                            }}
-                        />
-                    </div>
+                <section className="">
+                    <input
+                        type="text"
+                        placeholder="Type here"
+                        className="input input-ghost w-full max-w-lg my-10"
+                    />
                 </section>
             )}
         </div>
