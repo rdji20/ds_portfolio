@@ -1,32 +1,7 @@
-import React, { useState } from "react";
+import React from "react";
 import imageSrc from "../img/me_sea.jpg";
 
-// Function to send a message to the backend and retrieve the response
-async function sendMessageToBackend(userMessage) {
-    const response = await fetch("http://localhost:5000/api/chat", {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ message: userMessage }),
-    });
-    const data = await response.json();
-    return data.response; // This will be the SDK's response
-}
-
 function Home() {
-    const [chatOn, setChat] = useState(true);
-    const [messages, setMessages] = useState([]); // To store all chat messages
-
-    async function handleSendMessage(userMessage) {
-        const sdkResponse = await sendMessageToBackend(userMessage);
-        setMessages([
-            ...messages,
-            { sender: "user", text: userMessage },
-            { sender: "sdk", text: sdkResponse },
-        ]);
-    }
-
     return (
         <div className="App">
             <header className="App-header">
@@ -42,15 +17,13 @@ function Home() {
                 </div>
             </header>
 
-            {chatOn && (
-                <section className="">
-                    <input
-                        type="text"
-                        placeholder="Type here"
-                        className="input input-ghost w-full max-w-lg my-10"
-                    />
-                </section>
-            )}
+            <section className="">
+                <input
+                    type="text"
+                    placeholder="Type here"
+                    className="input input-ghost w-full max-w-lg my-10"
+                />
+            </section>
         </div>
     );
 }
