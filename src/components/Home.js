@@ -1,7 +1,55 @@
-import React from "react";
+import React, { useState } from "react";
+import axios from "axios";
 import imageSrc from "../img/me_sea.jpg";
 
 function Home() {
+    // State for user's current input
+    const [userInput, setUserInput] = useState("");
+
+    // State for chat history
+    const [chatHistory, setChatHistory] = useState([]);
+
+    const [loading, setLoading] = useState(false);
+
+    // Handle user input change
+    const handleInputChange = (event) => {
+        setUserInput(event.target.value);
+    };
+
+    // Handle user message submission
+    const handleUserSubmit = async () => {
+        // Add user's message to chat history
+        setChatHistory((prevHistory) => [
+            ...prevHistory,
+            { type: "user", content: userInput },
+        ]);
+
+        setLoading(true);
+
+        try {
+            // Send user's message to the Flask backend
+            const response = await axios.post(
+                "https://dsportfoliobe-5e233b6122bf.herokuapp.com/getChatbotResponse",
+                { message: userInput }
+            );
+
+            // Add chatbot's response to chat history
+            if (response.data && response.data.response) {
+                setChatHistory((prevHistory) => [
+                    ...prevHistory,
+                    { type: "bot", content: response.data.response },
+                ]);
+            }
+        } catch (error) {
+            console.error("Error communicating with the backend:", error);
+        }
+
+        setLoading(false);
+
+        // Clear the user input
+        setUserInput("");
+    };
+
     return (
         <div className="App">
             <header className="App-header">
@@ -17,12 +65,35 @@ function Home() {
                 </div>
             </header>
 
+            {/* Display chat history */}
+            <section className="chat-history">
+                {chatHistory.map((message, index) => (
+                    <div
+                        key={index}
+                        className={`chat-message ${message.type}-message`}
+                    >
+                        {message.content}
+                    </div>
+                ))}
+            </section>
+            {loading ? (
+                <button className="btn btn-square">
+                    <span className="loading loading-spinner"></span>
+                </button>
+            ) : null}
+
+            {/* Input for user's message */}
             <section className="">
                 <input
                     type="text"
                     placeholder="Type here"
+                    value={userInput}
+                    onChange={handleInputChange}
                     className="input input-ghost w-full max-w-lg my-10"
                 />
+                <button className="btn btn-s" onClick={handleUserSubmit}>
+                    Send
+                </button>
             </section>
         </div>
     );

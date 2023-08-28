@@ -18,10 +18,52 @@ body {
     flex-direction: column;
 }
 
-.App {
-    text-align: center;
+/* Chat Interface Styling */
+
+/* General styles for all chat messages */
+.chat-message {
+    padding: 10px 15px;
+    margin: 5px 0;
+    border-radius: 10px;
+    max-width: 70%; /* Limit message width for better aesthetics */
+    word-wrap: break-word; /* Wrap long messages */
 }
 
+/* Styling for user messages */
+.user-message {
+    background-color: #dcf8c6; /* Light green background for user messages */
+    align-self: flex-end; /* Align to the right */
+    margin-right: 10px; /* Some margin for aesthetics */
+    border-top-right-radius: 0; /* Make top right corner flat */
+}
+
+/* Styling for bot messages */
+.bot-message {
+    background-color: #eaeaea; /* Light gray background for bot messages */
+    align-self: flex-start; /* Align to the left */
+    margin-left: 10px; /* Some margin for aesthetics */
+    border-top-left-radius: 0; /* Make top left corner flat */
+}
+
+/* Container for chat history to enable flex layout */
+.chat-history {
+    margin: auto;
+    width: 80%;
+    display: flex;
+    flex-direction: column; /* Stack messages vertically */
+    align-items: flex-start; /* Start with alignment to the left (for bot messages) */
+}
+
+/* Set the background color for the entire app */
+.App {
+    text-align: center;
+    background-color: #282c34; /* This is the default background color in the App.css provided earlier */
+}
+
+/* Set the background color for the chat history container */
+.chat-history {
+    background-color: #282c34;
+}
 .App-logo {
     height: 40vmin;
     pointer-events: none;
