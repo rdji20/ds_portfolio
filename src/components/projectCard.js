@@ -12,7 +12,9 @@ function ProjectCard({ project }) {
                 />
             )}
             <div className="p-4">
-                <h3 className="text-xl font-semibold mb-2">{project.title}</h3>
+                <h3 className="text-xl font-semibold mb-2 text-black">
+                    {project.title}
+                </h3>
                 <p className="text-gray-600 mb-4">{project.description}</p>
                 <a
                     href={project.url}

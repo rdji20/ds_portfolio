@@ -35,6 +35,7 @@ body {
     align-self: flex-end; /* Align to the right */
     margin-right: 10px; /* Some margin for aesthetics */
     border-top-right-radius: 0; /* Make top right corner flat */
+    color: #282c34;
 }
 
 /* Styling for bot messages */
@@ -43,6 +44,7 @@ body {
     align-self: flex-start; /* Align to the left */
     margin-left: 10px; /* Some margin for aesthetics */
     border-top-left-radius: 0; /* Make top left corner flat */
+    color: #282c34;
 }
 
 /* Container for chat history to enable flex layout */

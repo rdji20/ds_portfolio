@@ -2,6 +2,10 @@ import React, { useState } from "react";
 import axios from "axios";
 import imageSrc from "../img/me_sea.jpg";
 
+const production_link =
+    "https://dsportfoliobe-5e233b6122bf.herokuapp.com/getChatbotResponse";
+// const dev_link = "http://127.0.0.1:5000/getChatbotResponse";
+
 function Home() {
     // State for user's current input
     const [userInput, setUserInput] = useState("");
@@ -28,10 +32,9 @@ function Home() {
 
         try {
             // Send user's message to the Flask backend
-            const response = await axios.post(
-                "https://dsportfoliobe-5e233b6122bf.herokuapp.com/getChatbotResponse",
-                { message: userInput }
-            );
+            const response = await axios.post(production_link, {
+                message: userInput,
+            });
 
             // Add chatbot's response to chat history
             if (response.data && response.data.response) {
