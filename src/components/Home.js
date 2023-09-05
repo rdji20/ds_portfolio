@@ -60,10 +60,14 @@ function Home() {
                     <img src={imageSrc} className="Profile-img" alt="logo" />
                     <h2 className="text-3xl font-bold pt-6">Hello World!</h2>
                     <p className="greeting pb-6">
-                        My name is Roberto and I'm a Information and Data
-                        Scientist. Chat with my{" "}
+                        My name is Roberto and I'm an Information/Data Scientist
+                        and software developer. Chat with my{" "}
                         <span className="bot-name">Bobby.AI</span> to know more
                         about me!
+                    </p>
+                    <p className="text-xs text-stone-400">
+                        Version 1.0 works as search rather than conversation.
+                        Currently working on adding context from chat history.
                     </p>
                 </div>
             </header>
