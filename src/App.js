@@ -4,8 +4,8 @@ import Home from "./components/Home";
 import Projects from "./components/Projects";
 import "./App.css";
 
-function Blog() {
-    return <div>Blog Page</div>;
+function Notes() {
+    return <div>Notes Page</div>;
 }
 
 function App() {
@@ -22,10 +22,10 @@ function App() {
                             Projects
                         </Link>
                         <Link
-                            to="/blog"
+                            to="/notes"
                             className="hover:text-gray-300 opacity-50 cursor-not-allowed pointer-events-none"
                         >
-                            Blog
+                            Notes
                         </Link>
                     </div>
                 </div>
@@ -35,7 +35,7 @@ function App() {
             {/* Routes */}
             <Routes>
                 <Route path="/projects" element={<Projects />} />
-                <Route path="/blog" element={<Blog />} />
+                <Route path="/notes" element={<Notes />} />
                 <Route path="/*" element={<Home />} />
             </Routes>
         </Router>
