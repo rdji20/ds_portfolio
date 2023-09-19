@@ -22,7 +22,7 @@ function ProjectCard({ project }) {
                     rel="noopener noreferrer"
                     className="text-indigo-600 hover:text-indigo-800 hover:underline"
                 >
-                    View Details
+                    Link
                 </a>
             </div>
         </div>

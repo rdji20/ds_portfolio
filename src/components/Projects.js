@@ -1,36 +1,9 @@
-import React, { useState, useEffect } from "react";
-import axios from "axios";
+import React, { useContext } from "react";
 import ProjectCard from "./projectCard";
+import { ProjectsContext } from "../contexts/ProjectsContext";
 
 function Projects() {
-    const [projectsData, setProjectsData] = useState([]);
-
-    useEffect(() => {
-        const fetchProjects = async () => {
-            // Check local storage first
-            const cachedProjects = JSON.parse(localStorage.getItem("projects"));
-
-            if (cachedProjects) {
-                setProjectsData(cachedProjects);
-            } else {
-                try {
-                    const response = await axios.get(
-                        "https://dsportfoliobe-5e233b6122bf.herokuapp.com/projects"
-                    );
-                    setProjectsData(response.data);
-                    // Cache the fetched projects in local storage
-                    localStorage.setItem(
-                        "projects",
-                        JSON.stringify(response.data)
-                    );
-                } catch (error) {
-                    console.error("Error fetching projects:", error);
-                }
-            }
-        };
-
-        fetchProjects();
-    }, []);
+    const projectsData = useContext(ProjectsContext);
 
     return (
         <div className="grid grid-cols-3 gap-4 projects-grid">

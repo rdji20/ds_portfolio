@@ -1,13 +1,16 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import axios from "axios";
 import imageSrc from "../img/me_sea.jpg";
+import { ChatContext } from "../contexts/ChatContext";
 
-const production_link =
-    "https://dsportfoliobe-5e233b6122bf.herokuapp.com/getChatbotResponse";
-// const dev_link = "http://127.0.0.1:5000/getChatbotResponse";
+const production_link = "https://dsportfoliobe-5e233b6122bf.herokuapp.com/";
+// const dev_link = "http://127.0.0.1:5000/";
+
+console.log("Home component mounted");
 
 function Home() {
     // State for user's current input
+
     const [userInput, setUserInput] = useState("");
 
     // State for chat history
@@ -15,9 +18,43 @@ function Home() {
 
     const [loading, setLoading] = useState(false);
 
+    const {
+        greeting,
+        hasFetched,
+        session,
+        user,
+        userContext,
+        infoBeh,
+        setUser,
+        setUserContext,
+        setInfoBeh,
+    } = useContext(ChatContext);
+
+    useEffect(() => {
+        // Check if the greeting is already in the chatHistory
+
+        if (hasFetched && greeting) {
+            setChatHistory((prevHistory) => [
+                ...prevHistory,
+                { type: "bot", content: greeting },
+            ]);
+        }
+    }, [greeting, hasFetched]);
+
     // Handle user input change
     const handleInputChange = (event) => {
         setUserInput(event.target.value);
+    };
+
+    // Convert chat history to text
+    const chatHistoryToText = (chatHistory) => {
+        return chatHistory
+            .map((entry) => {
+                let sender =
+                    entry.type.charAt(0).toUpperCase() + entry.type.slice(1);
+                return `${sender}: ${entry.content}`;
+            })
+            .join("\n");
     };
 
     // Handle user message submission
@@ -30,10 +67,18 @@ function Home() {
 
         setLoading(true);
 
+        const formattedChatHistory = chatHistoryToText(chatHistory);
+        console.log(formattedChatHistory);
+
         try {
             // Send user's message to the Flask backend
-            const response = await axios.post(production_link, {
+            const response = await axios.post(production_link + "devTestChat", {
                 message: userInput,
+                user: user,
+                session: session,
+                user_context: userContext,
+                info_behavior: infoBeh,
+                chat: formattedChatHistory,
             });
 
             // Add chatbot's response to chat history
@@ -42,11 +87,14 @@ function Home() {
                     ...prevHistory,
                     { type: "bot", content: response.data.response },
                 ]);
+                setInfoBeh(response.data.info_behavior);
+                setUser(response.data.user);
+                setUserContext(response.data.user_context);
             }
         } catch (error) {
             console.error("Error communicating with the backend:", error);
         }
-
+        console.log(user, "This is the user now");
         setLoading(false);
 
         // Clear the user input
@@ -61,13 +109,17 @@ function Home() {
                     <h2 className="text-3xl font-bold pt-6">Hello World!</h2>
                     <p className="pt-3 text-lg">
                         My name is Roberto and I'm an Information/Data Scientist
-                        and software developer. Chat with my{" "}
-                        <span className="bot-name">Bobby.AI</span> to know more
-                        about me!
+                        and software developer.
+                    </p>
+                    <p className="pb-5 text-lg">
+                        Chat with my <span className="bot-name">Bobby.AI</span>{" "}
+                        to know more about me and my projects!
                     </p>
                     <p className="text-xs text-stone-400">
-                        Version 1.0 works as search rather than conversation.
-                        Currently working on adding context from chat history.
+                        Version 1.1 Chat like conversation implemented. Doesn't
+                        have all the information yet. Currently working in
+                        developing vector database and adding code examples.
+                        None of the personal information is saved.
                     </p>
                 </div>
             </header>
@@ -102,10 +154,13 @@ function Home() {
                 <button
                     className="btn m-1 bg-slate-500 text-white border-slate-500"
                     onClick={() => {
-                        setUserInput("Tell me about projects in your resume");
+                        setUserInput(
+                            "My name is Tua I'm a recruiter and I want to learn more about your projects."
+                        );
                     }}
                 >
-                    Tell me about projects in your resume
+                    My name is Tua I'm a recruiter and I want to learn more
+                    about your projects.
                 </button>
                 <button
                     className="btn m-1  bg-slate-500 text-white border-slate-500"
