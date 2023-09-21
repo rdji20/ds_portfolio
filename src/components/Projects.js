@@ -6,10 +6,12 @@ function Projects() {
     const projectsData = useContext(ProjectsContext);
 
     return (
-        <div className="grid grid-cols-3 gap-4 projects-grid">
-            {projectsData.map((project, index) => (
-                <ProjectCard key={index} project={project} />
-            ))}
+        <div className="App">
+            <div className="grid grid-cols-3 gap-4 projects-grid">
+                {projectsData.map((project, index) => (
+                    <ProjectCard key={index} project={project} />
+                ))}
+            </div>
         </div>
     );
 }
