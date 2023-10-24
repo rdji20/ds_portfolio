@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useContext } from "react";
 // import Modal from "react-modal";
 import { ProjectsContext } from "../contexts/ProjectsContext";
 
@@ -6,7 +6,7 @@ const NotesPage = () => {
     const { notes } = useContext(ProjectsContext); //Here I deleted setNotes
     // const [modalIsOpen, setModalIsOpen] = useState(false);
     // const [secretWord, setSecretWord] = useState("");
-    const [expandedNote, setExpandedNote] = useState(null);
+    // const [expandedNote, setExpandedNote] = useState(null);
 
     // // Handler for adding new notes
     // const addNote = () => {
@@ -39,13 +39,13 @@ const NotesPage = () => {
     // };
 
     // NEW: Handler for expanding and collapsing notes
-    const toggleNoteExpansion = (id) => {
-        if (expandedNote === id) {
-            setExpandedNote(null); // Collapse the currently expanded note
-        } else {
-            setExpandedNote(id); // Expand the new note
-        }
-    };
+    // const toggleNoteExpansion = (id) => {
+    //     if (expandedNote === id) {
+    //         setExpandedNote(null); // Collapse the currently expanded note
+    //     } else {
+    //         setExpandedNote(id); // Expand the new note
+    //     }
+    // };
 
     return (
         <div className="App p-5 text-white">
