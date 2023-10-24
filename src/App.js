@@ -5,10 +5,7 @@ import Projects from "./components/Projects";
 import "./App.css";
 import { ChatProvider } from "./contexts/ChatContext";
 import { ProjectsProvider } from "./contexts/ProjectsContext";
-
-function Notes() {
-    return <div>Notes Page</div>;
-}
+import Notes from "./components/Notes";
 
 function App() {
     return (
@@ -30,7 +27,7 @@ function App() {
                                 </Link>
                                 <Link
                                     to="/notes"
-                                    className="hover:text-gray-300 opacity-50 cursor-not-allowed pointer-events-none"
+                                    className="hover:text-gray-300"
                                 >
                                     Notes
                                 </Link>

@@ -134,4 +134,32 @@ body {
         justify-content: center;
         align-items: center;
     }
+
+    /* App.css or another relevant CSS file */
+
+    .note-card {
+        width: 300px; /* Adjust based on your design preference */
+        height: 200px; /* Adjust based on your design preference */
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 20px; /* Space between cards */
+        cursor: pointer; /* Indicates the element is clickable */
+        background-color: #333; /* Example color */
+        color: white; /* Example text color */
+        padding: 15px;
+        border-radius: 5px; /* Optional: for rounded corners */
+    }
+
+    .note-content {
+        text-overflow: ellipsis;
+        overflow: hidden;
+        display: -webkit-box;
+        -webkit-line-clamp: 3; /* Number of lines you want displayed */
+        -webkit-box-orient: vertical;
+    }
+
+    .expanded {
+        height: auto;
+    }
 }

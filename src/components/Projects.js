@@ -3,12 +3,12 @@ import ProjectCard from "./projectCard";
 import { ProjectsContext } from "../contexts/ProjectsContext";
 
 function Projects() {
-    const projectsData = useContext(ProjectsContext);
+    const { projects } = useContext(ProjectsContext);
 
     return (
         <div className="App">
             <div className="grid grid-cols-3 gap-4 projects-grid">
-                {projectsData.map((project, index) => (
+                {projects.map((project, index) => (
                     <ProjectCard key={index} project={project} />
                 ))}
             </div>
